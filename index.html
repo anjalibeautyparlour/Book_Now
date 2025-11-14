@@ -5,174 +5,167 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Anjali Beauty Parlour</title>
 <style>
-    :root{--pink:#ffd9ec;--accent:#d12b6a;--muted:#4b4b4b}
-    body{font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#fff 0%,#ffeef6 100%);margin:0;color:var(--muted)}
-    header{display:flex;align-items:center;gap:12px;padding:18px}
-    header img{width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
-    header h1{margin:0;color:var(--accent);font-size:22px}
-    .container{max-width:820px;margin:18px auto;padding:18px}
-    h2{color:var(--accent)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-    .service-box{background:#fff;border-radius:12px;padding:14px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,0.06);cursor:pointer;transition:transform .18s,background .18s;border:2px solid transparent}
-    .service-box:hover{transform:translateY(-6px);background:var(--pink)}
-    .service-box.selected{background:linear-gradient(180deg,#ffe6f2,#ffd9ec);border-color:rgba(209,43,106,0.15)}
-    .form-box{display:none;background:#fff;padding:16px;border-radius:12px;margin-top:16px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
-    .chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
-    .chip{background:#fff;border:1px solid #eee;padding:8px 10px;border-radius:20px;font-size:14px;display:inline-flex;align-items:center;gap:8px}
-    .chip button{background:transparent;border:none;color:var(--accent);cursor:pointer;font-weight:700}
-    .form-row{display:flex;gap:8px;flex-wrap:wrap}
-    input[type=text],input[type=date],input[type=tel]{flex:1;padding:10px;border-radius:10px;border:1px solid #e6e6e6;font-size:15px}
-    button.ok{background:var(--accent);color:#fff;padding:12px;border:none;border-radius:10px;font-size:16px;cursor:pointer}
-    button.cancel{background:#f2f2f2;color:var(--accent);padding:12px;border:none;border-radius:10px;cursor:pointer}
-    .watermark{position:fixed;right:18px;bottom:18px;opacity:.95;width:112px}
-    /* modal */
-    .modal{position:fixed;left:0;top:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.28);visibility:hidden;opacity:0;transition:opacity .2s,visibility .2s}
-    .modal.show{visibility:visible;opacity:1}
-    .modal-card{background:#fff;padding:20px;border-radius:12px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
-    .tick{width:70px;height:70px;border-radius:50%;display:inline-grid;place-items:center;background:linear-gradient(135deg,#d12b6a,#ff7fb3);margin-bottom:10px}
-    @media(max-width:480px){header img{width:56px;height:56px}.container{padding:12px}}
+:root{--pink:#ffd9ec;--accent:#d12b6a;--muted:#4b4b4b}
+body{font-family:Arial;background:linear-gradient(180deg,#fff,#ffeef6);margin:0;color:var(--muted)}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px}
+header img{width:70px;height:70px;border-radius:50%;cursor:pointer}
+.btn-small{background:var(--accent);color:#fff;padding:8px 14px;border:none;border-radius:8px;cursor:pointer}
+.container{max-width:820px;margin:0 auto;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.service-box{background:#fff;border-radius:12px;padding:12px;text-align:center;cursor:pointer;border:2px solid transparent;box-shadow:0 4px 10px #0001}
+.service-box.selected{border-color:var(--accent);background:#ffe6f2}
+.form-box,input,textarea,button{font-size:15px}
+.form-box{display:none;background:#fff;padding:16px;border-radius:12px;margin-top:14px;box-shadow:0 4px 12px #0002}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.chip{padding:6px 10px;background:#fff;border-radius:20px;border:1px solid #ccc;display:flex;gap:6px}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:#0006;display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:.2s}
+.modal.show{visibility:visible;opacity:1}
+.modal-card{background:#fff;padding:20px;border-radius:12px;width:90%;max-width:420px}
 </style>
 </head>
 <body>
 
 <header>
-    <img src="LOGO.png" alt="Anjali Logo" />
-    <div>
-        <h1>Anjali Beauty Parlour</h1>
-        <div style="font-size:13px;color:#666">Veraval (Shapar) • Bridal • Makeup • Mehndi</div>
+    <h2 style="color:var(--accent)">અંજલી બ્યુટી પાર્લર (Anjali Beauty Parlour)</h2>
+    <div style="display:flex;gap:10px;align-items:center">
+        <button class="btn-small" onclick="openLogin()">લોગિન / રજીસ્ટર (Login / Register)</button>
+        <img src="LOGO.png" onclick="openQuote()" title="Quotation માંગવા ક્લિક કરો" />
     </div>
 </header>
 
-<main class="container">
-    <h2>સેવાઓ પસંદ કરો (Select service)</h2>
-    <div class="grid" id="services">
-        <div class="service-box" data-name="I-Brow">I-Brow</div>
-        <div class="service-box" data-name="Facial">Facial</div>
-        <div class="service-box" data-name="WAX">WAX</div>
-        <div class="service-box" data-name="Makeup">Makeup</div>
-        <div class="service-box" data-name="Bridal Makeup">Bridal Makeup</div>
-        <div class="service-box" data-name="Bridal Choli (Rent)">Bridal Choli (Rent)</div>
-        <div class="service-box" data-name="Mehndi">Mehndi</div>
+<div class="container">
+<h2 style="color:var(--accent)">સેવા પસંદ કરો (Select Service)</h2>
+<div class="grid" id="services">
+    <div class="service-box" data-name="I-Brow">આઇ-બ્રો (I-Brow)</div>
+    <div class="service-box" data-name="Facial">ફેશિયલ (Facial)</div>
+    <div class="service-box" data-name="WAX">વૅક્સ (WAX)</div>
+    <div class="service-box" data-name="Makeup">મેકઅપ (Makeup)</div>
+    <div class="service-box" data-name="Bridal Makeup">વેડિંગ મેકઅપ (Bridal Makeup)</div>
+    <div class="service-box" data-name="Bridal Choli (Rent)">લેહેંગા રેન્ટ (Bridal Choli Rent)</div>
+    <div class="service-box" data-name="Mehndi">મેહંદી (Mehndi)</div>
+    <div class="service-box" data-name="Other">અન્ય સેવા (Other)</div>
+</div>
+
+<div class="form-box" id="formBox">
+    <h3>પસંદ કરેલ સેવા (Selected Services)</h3>
+    <div class="chips" id="chips"></div>
+
+    <div id="otherBox" style="display:none;margin-top:10px">
+        <textarea id="otherText" placeholder="તમારી ખાસ જરૂરિયાત લખો (Write your requirement)"></textarea>
     </div>
 
-    <div class="form-box" id="formBox">
-        <h3>Selected services</h3>
-        <div class="chips" id="chips"></div>
+    <h3>બુકિંગ માહિતી (Booking Info)</h3>
+    <input type="text" id="uname" placeholder="તમારું નામ (Full Name)" />
+    <input type="date" id="date" style="margin-top:8px" />
+    <input type="tel" id="phone" maxlength="10" placeholder="મોબાઇલ નંબર (Phone)" style="margin-top:8px" />
 
-        <h3>Booking information / બુકિંગ માહિતી</h3>
-        <div class="form-row">
-            <input type="text" id="uname" placeholder="તમારું નામ / Full name" />
-        </div>
-        <div class="form-row" style="margin-top:8px">
-            <input type="date" id="date" />
-            <input type="tel" id="phone" placeholder="Mobile number (10 digits)" maxlength="10" />
-        </div>
-        <div style="display:flex;gap:8px;margin-top:12px">
-            <button class="ok" id="sendBtn">OK - Book & WhatsApp</button>
-            <button class="cancel" id="clearBtn">Clear Selection</button>
-        </div>
-    </div>
-    <h2 style="margin-top:30px;color:#d12b6a">Bridal Lehenga on Rent</h2>
-    <div style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06);text-align:center">
-        <img src="lehenga.jpg" alt="Bridal Lehenga" style="width:100%;border-radius:12px;margin-bottom:12px" />
-        <button class="ok" onclick="selectService('Bridal Lehenga (Rent)')">Book for Rent</button>
-    </div>
-</main>
+    <button class="btn-small" style="margin-top:10px" onclick="sendBooking()">વોટ્સએપ પર મોકલો (Send to WhatsApp)</button>
+</div>
 
-<img class="watermark" src="LOGO.png" alt="logo" />
+<h2 style="margin-top:26px;color:var(--accent)">લેહેંગા રેન્ટ (Bridal Lehenga Rent)</h2>
+<div style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 4px 12px #0002;text-align:center">
+    <img src="lehenga.jpg" style="width:100%;border-radius:12px" />
+    <button class="btn-small" style="margin-top:12px" onclick="selectService('Bridal Choli (Rent)')">રેન્ટ માટે બુક કરો (Book for Rent)</button>
+</div>
+</div>
 
-<div class="modal" id="modal">
-    <div class="modal-card">
-        <div class="tick">✔</div>
-        <h3>Booking opened in WhatsApp</h3>
-        <div style="font-size:14px;color:#666;margin-top:6px">Please send the message in WhatsApp to confirm your booking.</div>
-    </div>
+<!-- BOOKING MODAL -->
+<div class="modal" id="confirmModal">
+<div class="modal-card">
+<h3>વોટ્સએપ ખુલ્યું (WhatsApp Opened)</h3>
+<p>કૃપા કરીને મેસેજ મોકલો.</p>
+</div>
+</div>
+
+<!-- QUOTATION MODAL -->
+<div class="modal" id="quoteModal">
+<div class="modal-card">
+<h3>કોટેશન માંગો (Ask for Quotation)</h3>
+<input type="text" id="qname" placeholder="નામ (Name)" />
+<input type="tel" id="qphone" placeholder="મોબાઇલ નંબર (Phone)" style="margin-top:8px" />
+<textarea id="qmsg" placeholder="તમારી જરૂરિયાત લખો" style="margin-top:8px"></textarea>
+<button class="btn-small" style="margin-top:10px" onclick="sendQuote()">મોકલો (Send)</button>
+<button class="cancel" style="margin-top:6px" onclick="closeQuote()">બંધ કરો</button>
+</div>
+</div>
+
+<!-- LOGIN / REGISTER MODAL -->
+<div class="modal" id="loginModal">
+<div class="modal-card">
+<h3>લોગિન / રજીસ્ટર</h3>
+<input type="text" id="log_phone" placeholder="મોબાઇલ નંબર" />
+<input type="password" id="log_pass" placeholder="પાસવર્ડ" style="margin-top:8px" />
+<button class="btn-small" style="margin-top:10px" onclick="saveLogin()">લોગિન કરો</button>
+<button class="cancel" style="margin-top:6px" onclick="closeLogin()">બંધ કરો</button>
+</div>
 </div>
 
 <script>
-    // Keep track of selected services
-    const selectedServices = [];
-    const serviceBoxes = document.querySelectorAll('.service-box');
-    const formBox = document.getElementById('formBox');
-    const chips = document.getElementById('chips');
-    const modal = document.getElementById('modal');
+let selectedServices = [];
+const formBox = document.getElementById('formBox');
+const chips = document.getElementById('chips');
 
-    // Helper: update chips UI
-    function updateChips() {
-        chips.innerHTML = '';
-        selectedServices.forEach(function(s, idx) {
-            var chip = document.createElement('div');
-            chip.className = 'chip';
-            chip.innerHTML = s + ' <button aria-label="remove" data-idx="' + idx + '">×</button>';
-            chips.appendChild(chip);
-            chip.querySelector('button').addEventListener('click', function(e){
-                var i = Number(e.target.getAttribute('data-idx'));
-                removeServiceByIndex(i);
-            });
-        });
-        formBox.style.display = selectedServices.length ? 'block' : 'none';
-    }
+function updateUI(){
+ chips.innerHTML = '';
+ selectedServices.forEach((s,i)=>{
+  let c=document.createElement('div');
+  c.className='chip';
+  c.innerHTML=s+` <button data-i="${i}">×</button>`;
+  chips.appendChild(c);
+  c.querySelector('button').onclick=()=>remove(i);
+ });
+ formBox.style.display=selectedServices.length?"block":"none";
+ document.getElementById('otherBox').style.display = selectedServices.includes('Other')?"block":"none";
+}
 
-    function removeServiceByIndex(i){
-        var name = selectedServices[i];
-        selectedServices.splice(i,1);
-        // unselect visual
-        serviceBoxes.forEach(function(sb){ if(sb.getAttribute('data-name') === name) sb.classList.remove('selected'); });
-        updateChips();
-    }
+function selectService(n){
+ const i=selectedServices.indexOf(n);
+ if(i===-1) selectedServices.push(n);
+ else selectedServices.splice(i,1);
+ updateUI();
+}
+function remove(i){ selectedServices.splice(i,1); updateUI(); }
 
-    // Called when user clicks a service box
-    function selectService(name){
-        var idx = selectedServices.indexOf(name);
-        if(idx === -1){
-            selectedServices.push(name);
-            // visual select
-            serviceBoxes.forEach(function(sb){ if(sb.getAttribute('data-name') === name) sb.classList.add('selected'); });
-        } else {
-            // remove
-            selectedServices.splice(idx,1);
-            serviceBoxes.forEach(function(sb){ if(sb.getAttribute('data-name') === name) sb.classList.remove('selected'); });
-        }
-        updateChips();
-    }
+function sendBooking(){
+ let n=document.getElementById('uname').value;
+ let d=document.getElementById('date').value;
+ let p=document.getElementById('phone').value;
+ let other=document.getElementById('otherText').value;
 
-    // attach click listeners
-    serviceBoxes.forEach(function(sb) {
-        sb.addEventListener('click', function(){ selectService(sb.getAttribute('data-name')); });
-    });
+ if(!selectedServices.length){alert('કૃપા કરીને સેવા પસંદ કરો');return;}
+ if(!n||!d||p.length!==10){alert('માહિતી પૂર્ણ કરો');return;}
 
-    document.getElementById('clearBtn').addEventListener('click', function(){
-        selectedServices.length = 0;
-        serviceBoxes.forEach(function(sb){ sb.classList.remove('selected'); });
-        updateChips();
-        document.getElementById('uname').value='';
-        document.getElementById('date').value='';
-        document.getElementById('phone').value='';
-    });
+ let s=selectedServices.join(', ');
+ if(selectedServices.includes('Other')) s+=` (Other: ${other})`;
 
-    function validPhone(p){ return /^[0-9]{10}$/.test(p); }
+ let msg=`Service: ${s}\nName: ${n}\nDate: ${d}\nPhone: ${p}`;
+ window.open(`https://api.whatsapp.com/send?phone=919106177279&text=${encodeURIComponent(msg)}`);
+ document.getElementById('confirmModal').classList.add('show');
+ setTimeout(()=>document.getElementById('confirmModal').classList.remove('show'),2000);
+}
 
-    document.getElementById('sendBtn').addEventListener('click', function(){
-        var name = document.getElementById('uname').value.trim();
-        var date = document.getElementById('date').value;
-        var phone = document.getElementById('phone').value.trim();
+// QUOTATION
+function openQuote(){document.getElementById('quoteModal').classList.add('show')}
+function closeQuote(){document.getElementById('quoteModal').classList.remove('show')}
+function sendQuote(){
+ let n=document.getElementById('qname').value;
+ let p=document.getElementById('qphone').value;
+ let m=document.getElementById('qmsg').value;
+ if(!n||!p||!m){alert('માહિતી પૂર્ણ કરો');return;}
+ let msg=`Quotation Request\nName: ${n}\nPhone: ${p}\nMsg: ${m}`;
+ window.open(`https://api.whatsapp.com/send?phone=919106177279&text=${encodeURIComponent(msg)}`);
+ closeQuote();
+}
 
-        if(selectedServices.length === 0){ alert('Please select at least one service.'); return; }
-        if(!name){ alert('Please enter your name.'); return; }
-        if(!date){ alert('Please select a date.'); return; }
-        if(!validPhone(phone)){ alert('Please enter a valid 10-digit mobile number.'); return; }
-
-        var nl = String.fromCharCode(10);
-        var msg = 'Services: ' + selectedServices.join(', ') + nl + 'Name: ' + name + nl + 'Date: ' + date + nl + 'Phone: ' + phone;
-        var encoded = encodeURIComponent(msg);
-        var url = 'https://api.whatsapp.com/send?phone=919106177279&text=' + encoded;
-
-        // show confirmation modal and open whatsapp in new tab
-        modal.classList.add('show');
-        window.open(url, '_blank');
-        setTimeout(function(){ modal.classList.remove('show'); }, 2500);
-    });
-
+// LOGIN
+function openLogin(){document.getElementById('loginModal').classList.add('show')}
+function closeLogin(){document.getElementById('loginModal').classList.remove('show')}
+function saveLogin(){
+ localStorage.setItem('userPhone',document.getElementById('log_phone').value);
+ localStorage.setItem('userPass',document.getElementById('log_pass').value);
+ alert('Login Successful (Saved)');
+ closeLogin();
+}
 </script>
 
 </body>
