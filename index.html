@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Anjali Beauty Parlour</title>
+<title>અંજલી બ્યુટી પાર્લર</title>
 <style>
 :root{--pink:#ffd9ec;--accent:#d12b6a;--muted:#4b4b4b}
-body{font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#fff,#ffeef6);margin:0;color:var(--muted)}
+body{font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#eecda3,#ef629f);margin:0;color:var(--muted)}
 header{display:flex;justify-content:space-between;align-items:center;padding:16px}
 header img{width:70px;height:70px;border-radius:50%;cursor:pointer}
 .btn-small{background:var(--accent);color:#fff;padding:8px 14px;border:none;border-radius:8px;cursor:pointer}
@@ -29,9 +29,9 @@ input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e
 <body>
 
 <header>
-    <h2 style="color:var(--accent);margin:0">Anjali Beauty Parlour</h2>
+    <h2 style="color:var(--accent);margin:0">અંજલી બ્યુટી પાર્લર</h2>
     <div style="display:flex;gap:10px;align-items:center">
-        <img src="LOGO.png" onclick="openQuote()" title="બીજા પ્રસ્નો માટે" alt="લોગો" />
+        <img src="LOGO.png" onclick="openQuote()" title="કોટેશન માટે ક્લિક કરો" alt="લોગો" />
     </div>
 </header>
 
@@ -45,7 +45,7 @@ input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e
     <div class="service-box" data-name="Bridal Makeup">લગ્ન મેકઅપ</div>
     <div class="service-box" data-name="Bridal Choli (Rent)">લેહેંગા (ભાડે)</div>
     <div class="service-box" data-name="Mehndi">મેહંદી</div>
-    <div class="service-box" data-name="Other">Other</div>
+    <div class="service-box" data-name="Other">અન્ય</div>
 </div>
 
 <div class="form-box" id="formBox">
@@ -67,7 +67,7 @@ input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e
 <h2 style="margin-top:26px;color:var(--accent)">લેહેંગા રેન્ટ</h2>
 <div style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.06);text-align:center">
     <img src="lehenga.jpg" alt="લેહેંગા" style="width:100%;border-radius:12px" />
-    <button class="btn-small" style="margin-top:12px" id="rentBtn">Book for Rent</button>
+    <button class="btn-small" style="margin-top:12px" id="rentBtn">ભાડે બુક કરો</button>
 </div>
 </div>
 
@@ -85,7 +85,7 @@ input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e
 <h3>કોટેશન માંગો</h3>
 <input type="text" id="qname" placeholder="નામ" />
 <input type="tel" id="qphone" placeholder="મોબાઇલ નંબર" />
-<textarea id="qmsg" placeholder="તમારો પ્રસન લખો"></textarea>
+<textarea id="qmsg" placeholder="તમારો પ્રશ્ન અહીં લખો"></textarea>
 <button class="btn-small" style="margin-top:10px" id="quoteSend">મોકલો</button>
 <button class="cancel" style="margin-top:6px" onclick="closeQuote()">બંધ કરો</button>
 </div>
@@ -212,7 +212,7 @@ document.getElementById('quoteSend').addEventListener('click', () => {
   closeQuote();
 });
 
-/* init: if any pre-selected (none) just ensure UI consistent */
+/* init: ensure UI consistent */
 updateUI();
 </script>
 
