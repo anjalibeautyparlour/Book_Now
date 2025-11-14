@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>અંજલી બ્યુટી પાર્લર</title>
+<title>Anjali Beauty Parlour</title>
 <style>
 :root{--pink:#ffd9ec;--accent:#d12b6a;--muted:#4b4b4b}
 body{font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#fff,#ffeef6);margin:0;color:var(--muted)}
@@ -29,9 +29,9 @@ input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e
 <body>
 
 <header>
-    <h2 style="color:var(--accent);margin:0">અંજલી બ્યુટી પાર્લર</h2>
+    <h2 style="color:var(--accent);margin:0">Anjali Beauty Parlour</h2>
     <div style="display:flex;gap:10px;align-items:center">
-        <img src="LOGO.png" onclick="openQuote()" title="કોટેશન માટે ક્લિક કરો" alt="લોગો" />
+        <img src="LOGO.png" onclick="openQuote()" title="બીજા પ્રસ્નો માટે" alt="લોગો" />
     </div>
 </header>
 
@@ -42,22 +42,22 @@ input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e
     <div class="service-box" data-name="Facial">ફેશિયલ</div>
     <div class="service-box" data-name="WAX">વૅક્સ</div>
     <div class="service-box" data-name="Makeup">મેકઅપ</div>
-    <div class="service-box" data-name="Bridal Makeup">વેડિંગ મેકઅપ</div>
-    <div class="service-box" data-name="Bridal Choli (Rent)">લેહેંગા (રેન્ટ)</div>
+    <div class="service-box" data-name="Bridal Makeup">લગ્ન મેકઅપ</div>
+    <div class="service-box" data-name="Bridal Choli (Rent)">લેહેંગા (ભાડે)</div>
     <div class="service-box" data-name="Mehndi">મેહંદી</div>
-    <div class="service-box" data-name="Other">અન્ય</div>
+    <div class="service-box" data-name="Other">Other</div>
 </div>
 
 <div class="form-box" id="formBox">
-    <h3>પસંદ કરેલ સેવા</h3>
+    <h3>પસંદ કરેલ સેવા (Select Option)</h3>
     <div class="chips" id="chips"></div>
 
     <div id="otherBox" style="display:none;margin-top:10px">
-        <textarea id="otherText" placeholder="તમારી ખાસ જરૂરિયાત અહીં લખો"></textarea>
+        <textarea id="otherText" placeholder="અન્ય જરૂરિયાત અહીં લખો"></textarea>
     </div>
 
     <h3 style="margin-top:10px">બુકિંગ માહિતી</h3>
-    <input type="text" id="uname" placeholder="તમારું સંપૂર્ણ નામ" />
+    <input type="text" id="uname" placeholder="નામ" />
     <input type="date" id="date" />
     <input type="tel" id="phone" maxlength="10" placeholder="મોબાઇલ નંબર" />
 
@@ -85,7 +85,7 @@ input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e
 <h3>કોટેશન માંગો</h3>
 <input type="text" id="qname" placeholder="નામ" />
 <input type="tel" id="qphone" placeholder="મોબાઇલ નંબર" />
-<textarea id="qmsg" placeholder="તમારી જરૂરિયાત લખો"></textarea>
+<textarea id="qmsg" placeholder="તમારો પ્રસન લખો"></textarea>
 <button class="btn-small" style="margin-top:10px" id="quoteSend">મોકલો</button>
 <button class="cancel" style="margin-top:6px" onclick="closeQuote()">બંધ કરો</button>
 </div>
