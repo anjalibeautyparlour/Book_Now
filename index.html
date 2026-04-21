@@ -3,114 +3,351 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Anjali Beauty Parlour</title>
+<title>Anjali Beauty Parlour - Professional Beauty Services</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{
-  --pink:#ffd9ec;
-  --accent:#d12b6a;
-  --muted:#4b4b4b;
+  --primary:#d12b6a;
+  --primary-light:#ff6b9d;
+  --primary-dark:#a91d4f;
+  --secondary:#ffd9ec;
+  --accent:#ff9ec7;
+  --text-dark:#2d2d2d;
+  --text-light:#666;
+  --white:#ffffff;
+  --bg-light:#fef7fb;
+  --shadow-sm:0 2px 8px rgba(209,43,106,0.1);
+  --shadow-md:0 4px 16px rgba(209,43,106,0.15);
+  --shadow-lg:0 8px 32px rgba(209,43,106,0.2);
+  --border-radius:16px;
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(180deg,#fff,#ffeef6);
-  margin:0;
-  color:var(--muted);
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:linear-gradient(135deg, #fef7fb 0%, #fff5fa 50%, #ffeef6 100%);
+  min-height:100vh;
+  color:#d32f2f;
+  line-height:1.6;
+  overflow-x:hidden;
 }
 header{
+  background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color:var(--white);
+  padding:20px 0;
+  box-shadow:var(--shadow-md);
+  position:sticky;
+  top:0;
+  z-index:100;
+  animation:slideDown 0.5s ease-out;
+}
+@keyframes slideDown{
+  from{
+    transform:translateY(-100%);
+    opacity:0;
+  }
+  to{
+    transform:translateY(0);
+    opacity:1;
+  }
+}
+.header-content{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:16px;
+}
+header h1{
+  font-size:2rem;
+  font-weight:700;
+  text-shadow:2px 2px 4px rgba(0,0,0,0.2);
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+header h1 i{
+  font-size:1.8rem;
+  color:var(--secondary);
 }
 header img{
   width:70px;
   height:70px;
   border-radius:50%;
+  border:3px solid var(--secondary);
   cursor:pointer;
+  transition:all 0.3s ease;
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+header img:hover{
+  transform:scale(1.1) rotate(5deg);
+  box-shadow:0 6px 20px rgba(0,0,0,0.3);
+}
+.btn{
+  background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color:var(--white);
+  padding:12px 24px;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  font-size:1rem;
+  font-weight:600;
+  transition:all 0.3s ease;
+  box-shadow:var(--shadow-sm);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+}
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-md);
+  background:linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+}
+.btn:active{
+  transform:translateY(0);
 }
 .btn-small{
-  background:var(--accent);
-  color:#fff;
-  padding:8px 14px;
+  background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color:var(--white);
+  padding:8px 16px;
   border:none;
-  border-radius:8px;
+  border-radius:20px;
   cursor:pointer;
+  font-size:0.9rem;
+  font-weight:600;
+  transition:all 0.3s ease;
+  box-shadow:var(--shadow-sm);
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.btn-small:hover{
+  transform:translateY(-1px);
+  box-shadow:var(--shadow-md);
+}
+.btn-secondary{
+  background:linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+  color:var(--primary-dark);
+}
+.btn-secondary:hover{
+  background:linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
 }
 .container{
-  max-width:820px;
+  max-width:1200px;
   margin:0 auto;
-  padding:16px;
+  padding:40px 20px;
+}
+.section-title{
+  text-align:center;
+  font-size:2.2rem;
+  color:var(--primary);
+  margin-bottom:40px;
+  font-weight:700;
+  position:relative;
+  padding-bottom:15px;
+}
+.section-title::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:80px;
+  height:4px;
+  background:linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius:2px;
 }
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  margin-bottom:40px;
 }
 
 /* ====== SERVICE BOX + ANIMATION ====== */
 .service-box{
-  background:#fff;
-  border-radius:12px;
-  padding:12px;
+  background:linear-gradient(135deg, var(--white) 0%, #fafafa 100%);
+  border-radius:var(--border-radius);
+  padding:24px 16px;
   text-align:center;
   cursor:pointer;
   border:2px solid transparent;
-  box-shadow:0 4px 10px rgba(0,0,0,0.06);
+  box-shadow:var(--shadow-sm);
   user-select:none;
-  transition:
-    transform .18s ease,
-    box-shadow .18s ease,
-    border-color .18s ease,
-    background .18s ease;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position:relative;
+  overflow:hidden;
+}
+.service-box::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:4px;
+  background:linear-gradient(90deg, var(--primary), var(--primary-light));
+  transform:translateX(-100%);
+  transition:transform 0.3s ease;
+}
+.service-box:hover::before{
+  transform:translateX(0);
+}
+.service-box:hover{
+  transform:translateY(-5px) scale(1.02);
+  box-shadow:var(--shadow-lg);
+  border-color:var(--primary);
 }
 .service-box:active{
-  transform:scale(.96);
+  transform:translateY(-2px) scale(0.98);
 }
 .service-box.selected{
-  border-color:var(--accent);
-  background:#ffe6f2;
-  box-shadow:0 10px 20px rgba(0,0,0,0.15);
-  transform:translateY(-2px) scale(1.02);
-  animation:servicePop .22s ease-out;
+  border-color:var(--primary);
+  background:linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+  box-shadow:var(--shadow-lg);
+  transform:translateY(-3px) scale(1.05);
+  animation:servicePop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 @keyframes servicePop{
-  0%{transform:scale(.9);}
-  60%{transform:scale(1.05);}
-  100%{transform:translateY(-2px) scale(1.02);}
+  0%{
+    transform:scale(0.8) rotate(-5deg);
+    opacity:0;
+  }
+  50%{
+    transform:scale(1.1) rotate(3deg);
+  }
+  100%{
+    transform:translateY(-3px) scale(1.05) rotate(0deg);
+    opacity:1;
+  }
+}
+.service-box i{
+  font-size:2.5rem;
+  color:var(--primary);
+  margin-bottom:12px;
+  display:block;
+  transition:all 0.3s ease;
+}
+.service-box.selected i{
+  color:var(--primary-dark);
+  transform:scale(1.2);
+}
+.service-box h3{
+  font-size:1.1rem;
+  font-weight:600;
+  color:#d32f2f;
+  margin:0;
 }
 
-.form-box,input,textarea,button{
-  font-size:15px;
-}
 .form-box{
   display:none;
-  background:#fff;
-  padding:16px;
+  background:linear-gradient(135deg, var(--white) 0%, #fafafa 100%);
+  padding:30px;
+  border-radius:var(--border-radius);
+  margin-top:30px;
+  box-shadow:var(--shadow-md);
+  border:1px solid rgba(209,43,106,0.1);
+  animation:fadeInUp 0.5s ease-out;
+}
+@keyframes fadeInUp{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+.form-box h3{
+  color:var(--primary);
+  margin-bottom:20px;
+  font-size:1.4rem;
+  font-weight:600;
+}
+.form-group{
+  margin-bottom:20px;
+}
+.form-group label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:600;
+  color:var(--text-dark);
+}
+input,textarea,select{
+  width:100%;
+  padding:14px 16px;
   border-radius:12px;
-  margin-top:14px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  border:2px solid #e0e0e0;
+  font-size:1rem;
+  transition:all 0.3s ease;
+  background:var(--white);
+  font-family:inherit;
+}
+input:focus,textarea:focus,select:focus{
+  outline:none;
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(209,43,106,0.1);
+  transform:translateY(-1px);
 }
 .chips{
   display:flex;
-  gap:8px;
+  gap:10px;
   flex-wrap:wrap;
-  margin:8px 0;
+  margin:20px 0;
+  min-height:40px;
+  padding:10px;
+  background:var(--bg-light);
+  border-radius:12px;
+  border:2px dashed var(--primary);
 }
 .chip{
-  padding:6px 10px;
-  background:#fff;
+  padding:8px 16px;
+  background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color:var(--white);
   border-radius:20px;
-  border:1px solid #ccc;
   display:flex;
-  gap:6px;
+  gap:8px;
   align-items:center;
+  font-size:0.9rem;
+  font-weight:500;
+  box-shadow:var(--shadow-sm);
+  animation:chipIn 0.3s ease-out;
+}
+@keyframes chipIn{
+  from{
+    opacity:0;
+    transform:scale(0.8);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
 }
 .chip button{
   background:transparent;
   border:none;
-  color:var(--accent);
+  color:var(--white);
   font-weight:700;
   cursor:pointer;
+  font-size:1.1rem;
+  line-height:1;
+  padding:0;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:all 0.2s ease;
+}
+.chip button:hover{
+  background:rgba(255,255,255,0.2);
+  transform:rotate(90deg);
 }
 
 /* ====== MODALS ====== */
@@ -120,25 +357,76 @@ header img{
   left:0;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(5px);
   display:flex;
   align-items:center;
   justify-content:center;
   visibility:hidden;
   opacity:0;
-  transition:.2s;
-  z-index:50;
+  transition:all 0.3s ease;
+  z-index:1000;
 }
 .modal.show{
   visibility:visible;
   opacity:1;
 }
 .modal-card{
-  background:#fff;
-  padding:20px;
-  border-radius:12px;
+  background:linear-gradient(135deg, var(--white) 0%, #fafafa 100%);
+  padding:40px;
+  border-radius:var(--border-radius);
   width:90%;
-  max-width:420px;
+  max-width:500px;
+  box-shadow:var(--shadow-lg);
+  border:1px solid rgba(209,43,106,0.2);
+  transform:scale(0.9);
+  transition:transform 0.3s ease;
+}
+.modal.show .modal-card{
+  transform:scale(1);
+  animation:modalBounce 0.5s ease-out;
+}
+@keyframes modalBounce{
+  0%{
+    transform:scale(0.8) translateY(20px);
+    opacity:0;
+  }
+  50%{
+    transform:scale(1.05) translateY(-5px);
+  }
+  100%{
+    transform:scale(1) translateY(0);
+    opacity:1;
+  }
+}
+.modal-card h3{
+  color:var(--primary);
+  margin-bottom:20px;
+  font-size:1.5rem;
+  font-weight:600;
+  text-align:center;
+}
+.modal-card p{
+  color:var(--text-light);
+  line-height:1.6;
+  margin-bottom:20px;
+}
+.cancel{
+  background:transparent;
+  color:var(--text-light);
+  border:2px solid var(--text-light);
+  padding:10px 20px;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:600;
+  transition:all 0.3s ease;
+  width:100%;
+  margin-top:10px;
+}
+.cancel:hover{
+  background:var(--text-light);
+  color:var(--white);
+  transform:translateY(-1px);
 }
 
 /* ====== INPUTS ====== */
@@ -152,41 +440,1066 @@ input,textarea{
 
 /* ====== LEHENGA CARD STYLING ====== */
 .lehenga-card{
-  background:#fff;
-  padding:16px;
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+  background:linear-gradient(135deg, var(--white) 0%, #fafafa 100%);
+  padding:30px;
+  border-radius:var(--border-radius);
+  box-shadow:var(--shadow-md);
   text-align:center;
+  border:1px solid rgba(209,43,106,0.1);
+  transition:all 0.3s ease;
+}
+.lehenga-card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-lg);
 }
 .lehenga-image-wrap{
   display:flex;
   justify-content:center;
-  margin-bottom:10px;
+  margin-bottom:20px;
+  position:relative;
+  overflow:hidden;
+  border-radius:var(--border-radius);
+}
+.lehenga-image-wrap::before{
+  content:'📸';
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:var(--primary);
+  color:var(--white);
+  padding:8px 12px;
+  border-radius:20px;
+  font-size:0.9rem;
+  z-index:10;
 }
 .lehenga-image-wrap img{
-  max-width:180px;   /* small by default */
-  border-radius:12px;
+  max-width:250px;
+  border-radius:var(--border-radius);
   cursor:pointer;
-  transition:transform .18s ease, box-shadow .18s ease;
+  transition:all 0.3s ease;
+  box-shadow:var(--shadow-sm);
 }
 .lehenga-image-wrap img:hover{
   transform:scale(1.05);
-  box-shadow:0 8px 16px rgba(0,0,0,0.18);
+  box-shadow:var(--shadow-lg);
 }
 .lehenga-actions{
   display:flex;
-  gap:8px;
+  gap:15px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+.lehenga-info{
+  margin-top:20px;
+  padding:15px;
+  background:var(--bg-light);
+  border-radius:12px;
+  border-left:4px solid var(--primary);
+}
+.lehenga-info p{
+  color:var(--text-light);
+  font-size:0.95rem;
+  margin:0;
+  line-height:1.5;
+}
+
+/* ====== SPECIAL OFFERS BANNER ====== */
+.special-offers-banner{
+  background:linear-gradient(135deg, var(--accent) 0%, #ff6b6b 100%);
+  padding:40px 20px;
+  position:relative;
+  overflow:hidden;
+}
+.special-offers-banner::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity:0.3;
+  animation:float 20s ease-in-out infinite;
+}
+@keyframes float{
+  0%, 100%{ transform:translateY(0); }
+  50%{ transform:translateY(-10px); }
+}
+.offers-content{
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+.offers-title{
+  color:var(--white);
+  font-size:2.5rem;
+  font-weight:700;
+  margin-bottom:15px;
+  text-shadow:2px 2px 4px rgba(0,0,0,0.2);
+  animation:glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow{
+  from{ text-shadow:2px 2px 4px rgba(0,0,0,0.2), 0 0 20px rgba(255,255,255,0.3); }
+  to{ text-shadow:2px 2px 4px rgba(0,0,0,0.2), 0 0 30px rgba(255,255,255,0.5); }
+}
+.offers-subtitle{
+  color:rgba(255,255,255,0.9);
+  font-size:1.2rem;
+  margin-bottom:30px;
+  font-weight:500;
+}
+.offers-btn{
+  background:var(--white);
+  color:var(--accent);
+  border:none;
+  padding:15px 40px;
+  border-radius:50px;
+  font-size:1.1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.3s ease;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  animation:bounce 2s infinite;
+  position:relative;
+  overflow:hidden;
+}
+.offers-btn::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:0;
+  height:0;
+  border-radius:50%;
+  background:rgba(255,255,255,0.5);
+  transform:translate(-50%, -50%);
+  transition:width 0.6s, height 0.6s;
+}
+.offers-btn:hover::before{
+  width:300px;
+  height:300px;
+}
+.offers-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.3);
+  background:var(--secondary);
+}
+@keyframes bounce{
+  0%, 20%, 50%, 80%, 100%{ transform:translateY(0); }
+  40%{ transform:translateY(-10px); }
+  60%{ transform:translateY(-5px); }
+}
+@keyframes pulse{
+  0%, 20%, 50%, 80%, 100%{ transform:translateY(0); }
+  40%{ transform:translateY(-10px); }
+  60%{ transform:translateY(-5px); }
+}
+@keyframes logoSpin{
+  0%{ transform:rotate(0deg); }
+  100%{ transform:rotate(360deg); }
+}
+@keyframes logoPulse{
+  0%, 100%{ transform:scale(1); }
+  50%{ transform:scale(1.1); }
+}
+
+/* ====== HERO SECTION ====== */
+.hero{
+  background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color:var(--white);
+  padding:60px 20px;
+  text-align:center;
+  margin-bottom:40px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+  opacity:0.3;
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:800px;
+  margin:0 auto;
+}
+.hero h2{
+  font-size:2.5rem;
+  margin-bottom:20px;
+  font-weight:700;
+  text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+}
+.hero p{
+  font-size:1.2rem;
+  margin-bottom:30px;
+  opacity:0.9;
+  line-height:1.6;
+}
+.hero-buttons{
+  display:flex;
+  gap:20px;
   justify-content:center;
   flex-wrap:wrap;
 }
 
-@media (max-width:480px){
+/* ====== FEATURES SECTION ====== */
+.features{
+  padding:60px 20px;
+  background:var(--bg-light);
+}
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:0 auto;
+}
+.feature-card{
+  background:var(--white);
+  padding:30px;
+  border-radius:var(--border-radius);
+  text-align:center;
+  box-shadow:var(--shadow-sm);
+  transition:all 0.3s ease;
+  border:1px solid rgba(209,43,106,0.1);
+}
+.feature-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow-md);
+}
+.feature-card i{
+  font-size:3rem;
+  color:var(--primary);
+  margin-bottom:20px;
+}
+.feature-card h3{
+  color:var(--primary);
+  margin-bottom:15px;
+  font-size:1.3rem;
+}
+.feature-card p{
+  color:var(--text-light);
+  line-height:1.6;
+}
+
+/* ====== TESTIMONIALS ====== */
+.testimonials{
+  padding:60px 20px;
+  background:var(--white);
+}
+.testimonial-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:0 auto;
+}
+.testimonial-card{
+  background:var(--bg-light);
+  padding:30px;
+  border-radius:var(--border-radius);
+  border-left:4px solid var(--primary);
+  position:relative;
+}
+.testimonial-card::before{
+  content:'"';
+  position:absolute;
+  top:10px;
+  left:20px;
+  font-size:4rem;
+  color:var(--primary);
+  opacity:0.3;
+  line-height:1;
+}
+.testimonial-text{
+  font-style:italic;
+  color:var(--text-dark);
+  margin-bottom:20px;
+  line-height:1.6;
+  position:relative;
+  z-index:1;
+}
+.testimonial-author{
+  font-weight:600;
+  color:var(--primary);
+  text-align:right;
+}
+
+/* ====== CONTACT INFO ====== */
+.contact-info{
+  background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color:var(--white);
+  padding:40px 20px;
+  text-align:center;
+  margin-top:40px;
+}
+.contact-info h3{
+  font-size:1.8rem;
+  margin-bottom:20px;
+}
+.contact-details{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+.contact-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:1.1rem;
+}
+.contact-item i{
+  font-size:1.3rem;
+}
+
+/* ====== FOOTER ====== */
+footer{
+  background:var(--text-dark);
+  color:var(--white);
+  text-align:center;
+  padding:30px 20px;
+}
+footer p{
+  margin:0;
+  opacity:0.8;
+}
+footer .social-links{
+  margin-top:15px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+footer .social-links a{
+  color:var(--white);
+  font-size:1.5rem;
+  transition:all 0.3s ease;
+}
+footer .social-links a:hover{
+  color:var(--primary);
+  transform:translateY(-2px);
+}
+
+/* ====== ANIMATIONS ====== */
+.fade-in{
+  animation:fadeIn 0.8s ease-out;
+}
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.slide-in-left{
+  animation:slideInLeft 0.6s ease-out;
+}
+@keyframes slideInLeft{
+  from{
+    opacity:0;
+    transform:translateX(-30px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+.slide-in-right{
+  animation:slideInRight 0.6s ease-out;
+}
+@keyframes slideInRight{
+  from{
+    opacity:0;
+    transform:translateX(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+/* ====== LOADING ANIMATION ====== */
+.loading{
+  display:inline-block;
+  width:20px;
+  height:20px;
+  border:3px solid rgba(255,255,255,0.3);
+  border-radius:50%;
+  border-top-color:var(--white);
+  animation:spin 1s ease-in-out infinite;
+}
+@keyframes spin{
+  to{ transform: rotate(360deg); }
+}
+
+/* ====== GALLERY STYLING ====== */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  margin-top:30px;
+}
+.gallery-item{
+  position:relative;
+  border-radius:var(--border-radius);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  cursor:pointer;
+  transition:all 0.3s ease;
+  background:var(--white);
+}
+.gallery-item:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow-lg);
+}
+.gallery-item img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  transition:transform 0.3s ease;
+}
+.gallery-item:hover img{
+  transform:scale(1.05);
+}
+.gallery-overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:linear-gradient(to bottom, transparent 0%, rgba(209,43,106,0.8) 100%);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:center;
+  color:var(--white);
+  opacity:0;
+  transition:opacity 0.3s ease;
+  padding:20px;
+}
+.gallery-item:hover .gallery-overlay{
+  opacity:1;
+}
+.gallery-overlay i{
+  font-size:2rem;
+  margin-bottom:10px;
+  animation:iconPulse 1s ease-in-out infinite;
+}
+@keyframes iconPulse{
+  0%, 100%{ transform:scale(1); }
+  50%{ transform:scale(1.1); }
+}
+@keyframes pulse{
+  0%{ transform:scale(1); box-shadow:0 0 0 0 rgba(255,107,107,0.7); }
+  70%{ transform:scale(1.05); box-shadow:0 0 0 10px rgba(255,107,107,0); }
+  100%{ transform:scale(1); box-shadow:0 0 0 0 rgba(255,107,107,0); }
+}
+.gallery-overlay span{
+  font-weight:600;
+  font-size:1.1rem;
+  text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ====== IMAGE VIEWER MODAL ====== */
+.image-viewer-modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  opacity:0;
+  visibility:hidden;
+  transition:all 0.3s ease;
+}
+.image-viewer-modal.show{
+  opacity:1;
+  visibility:visible;
+}
+.image-viewer-content{
+  position:relative;
+  max-width:90%;
+  max-height:90%;
+  transform:scale(0.8);
+  transition:transform 0.3s ease;
+}
+.image-viewer-modal.show .image-viewer-content{
+  transform:scale(1);
+}
+.image-viewer-content img{
+  max-width:100%;
+  max-height:80vh;
+  border-radius:var(--border-radius);
+  box-shadow:0 10px 40px rgba(0,0,0,0.5);
+}
+.image-viewer-close{
+  position:absolute;
+  top:-50px;
+  right:0;
+  background:var(--primary);
+  color:var(--white);
+  border:none;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:1.5rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:all 0.3s ease;
+}
+.image-viewer-close:hover{
+  background:var(--primary-dark);
+  transform:rotate(90deg);
+}
+.image-viewer-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:var(--primary);
+  color:var(--white);
+  border:none;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:1.5rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:all 0.3s ease;
+  z-index:10;
+}
+.image-viewer-nav:hover{
+  background:var(--primary-dark);
+  transform:translateY(-50%) scale(1.1);
+}
+.image-viewer-prev{
+  left:20px;
+}
+.image-viewer-next{
+  right:20px;
+}
+.image-viewer-caption{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,0.8);
+  color:var(--white);
+  padding:10px 20px;
+  border-radius:25px;
+  font-weight:600;
+  backdrop-filter:blur(10px);
+}
+
+/* ====== REVIEWS SECTION ====== */
+.reviews{
+  padding:60px 20px;
+  background:linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+}
+.reviews-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:0 auto;
+}
+.review-card{
+  background:var(--white);
+  border-radius:var(--border-radius);
+  padding:25px;
+  box-shadow:var(--shadow-sm);
+  transition:all 0.3s ease;
+  border:1px solid rgba(209,43,106,0.1);
+}
+.review-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow-md);
+}
+.review-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:15px;
+}
+.reviewer-info{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+.reviewer-avatar{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--white);
+  font-size:1.2rem;
+}
+.reviewer-info h4{
+  margin:0;
+  color:#d32f2f;
+  font-size:1.1rem;
+  font-weight:600;
+}
+.review-rating{
+  margin-top:5px;
+  display:flex;
+  gap:2px;
+}
+.review-rating i{
+  color:var(--primary);
+  font-size:0.9rem;
+}
+.review-rating .far{
+  color:#ddd;
+}
+.review-date{
+  color:var(--text-light);
+  font-size:0.85rem;
+  font-weight:500;
+}
+.review-text{
+  color:#d32f2f;
+  line-height:1.6;
+  margin-bottom:15px;
+  font-style:normal;
+}
+.review-images{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+.review-images img{
+  width:80px;
+  height:80px;
+  border-radius:8px;
+  object-fit:cover;
+  cursor:pointer;
+  transition:all 0.3s ease;
+  border:2px solid transparent;
+}
+.review-images img:hover{
+  transform:scale(1.05);
+  border-color:var(--primary);
+  box-shadow:var(--shadow-sm);
+}
+
+/* ====== REVIEW MODAL ====== */
+.review-modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:3000;
+  opacity:0;
+  visibility:hidden;
+  transition:all 0.3s ease;
+}
+.review-modal.show{
+  opacity:1;
+  visibility:visible;
+}
+.review-modal-content{
+  background:var(--white);
+  padding:40px;
+  border-radius:var(--border-radius);
+  width:90%;
+  max-width:600px;
+  max-height:90vh;
+  overflow-y:auto;
+  transform:scale(0.9);
+  transition:transform 0.3s ease;
+}
+.review-modal.show .review-modal-content{
+  transform:scale(1);
+}
+.review-modal h3{
+  color:var(--primary);
+  margin-bottom:25px;
+  font-size:1.5rem;
+  font-weight:600;
+  text-align:center;
+}
+.star-rating{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:25px;
+}
+.star-rating .star{
+  font-size:2.5rem;
+  color:#ddd;
+  cursor:pointer;
+  transition:all 0.2s ease;
+}
+.star-rating .star:hover,
+.star-rating .star.active{
+  color:var(--primary);
+  transform:scale(1.1);
+}
+.review-form-group{
+  margin-bottom:20px;
+}
+.review-form-group label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:600;
+  color:var(--text-dark);
+}
+.review-form-group input,
+.review-form-group textarea{
+  width:100%;
+  padding:12px 16px;
+  border-radius:12px;
+  border:2px solid #e0e0e0;
+  font-size:1rem;
+  transition:all 0.3s ease;
+  background:var(--white);
+  font-family:inherit;
+}
+.review-form-group input:focus,
+.review-form-group textarea:focus{
+  outline:none;
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(209,43,106,0.1);
+}
+.image-upload-area{
+  border:2px dashed var(--primary);
+  border-radius:12px;
+  padding:30px;
+  text-align:center;
+  background:var(--bg-light);
+  cursor:pointer;
+  transition:all 0.3s ease;
+}
+.image-upload-area:hover{
+  background:var(--secondary);
+  border-color:var(--primary-dark);
+}
+.image-upload-area i{
+  font-size:3rem;
+  color:var(--primary);
+  margin-bottom:10px;
+}
+.image-preview{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+.image-preview-item{
+  position:relative;
+  width:100px;
+  height:100px;
+  border-radius:8px;
+  overflow:hidden;
+}
+.image-preview-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.image-preview-remove{
+  position:absolute;
+  top:5px;
+  right:5px;
+  background:var(--primary);
+  color:var(--white);
+  border:none;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:0.8rem;
+}
+.review-actions{
+  display:flex;
+  gap:15px;
+  margin-top:25px;
+}
+.review-actions button{
+  flex:1;
+}
+
+/* ====== SPECIAL OFFERS SECTION ====== */
+.special-offers{
+  padding:80px 20px;
+  background:linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+}
+.offers-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:0 auto;
+}
+.offer-card{
+  background:var(--white);
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 10px 40px rgba(209,43,106,0.1);
+  transition:all 0.4s ease;
+  position:relative;
+  overflow:hidden;
+  border:2px solid transparent;
+}
+.offer-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 60px rgba(209,43,106,0.2);
+  border-color:var(--primary);
+}
+.offer-badge{
+  position:absolute;
+  top:20px;
+  right:20px;
+  background:var(--accent);
+  color:var(--white);
+  padding:8px 16px;
+  border-radius:25px;
+  font-size:0.75rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  animation:pulse 2s infinite;
+}
+.offer-icon{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--white);
+  font-size:2rem;
+  margin-bottom:20px;
+  box-shadow:0 10px 20px rgba(209,43,106,0.2);
+}
+.offer-card h3{
+  color:#d32f2f;
+  font-size:1.4rem;
+  font-weight:700;
+  margin-bottom:15px;
+}
+.offer-discount{
+  background:linear-gradient(135deg, var(--accent) 0%, #ff6b6b 100%);
+  color:var(--white);
+  padding:10px 20px;
+  border-radius:15px;
+  font-size:1.2rem;
+  font-weight:800;
+  display:inline-block;
+  margin-bottom:20px;
+  box-shadow:0 5px 15px rgba(255,107,107,0.3);
+  animation:glow 2s ease-in-out infinite alternate;
+}
+.offer-description{
+  color:var(--text-dark);
+  font-size:1rem;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+.offer-valid{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#d32f2f;
+  font-size:1.1rem;
+  font-weight:600;
+  background:var(--bg-light);
+  padding:10px 15px;
+  border-radius:10px;
+  display:inline-flex;
+}
+.offer-select-hint{
+  position:absolute;
+  bottom:15px;
+  right:15px;
+  background:var(--primary);
+  color:var(--white);
+  padding:8px 12px;
+  border-radius:20px;
+  font-size:0.75rem;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  animation:slideInRight 0.5s ease-out;
+  box-shadow:0 5px 15px rgba(209,43,106,0.3);
+}
+.offer-card:hover .offer-select-hint{
+  background:var(--primary-dark);
+  transform:scale(1.05);
+}
+.offer-card.selected{
+  border:3px solid var(--primary);
+  background:linear-gradient(135deg, #fff0f5 0%, #ffe0e0 100%);
+  transform:scale(1.02);
+}
+.offer-card.selected .offer-select-hint{
+  background:var(--accent);
+  animation:pulse 1s infinite;
+}
+
+/* ====== OFFERS POPUP MODAL ====== */
+.offers-popup-modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:4000;
+  opacity:0;
+  visibility:hidden;
+  transition:all 0.3s ease;
+}
+.offers-popup-modal.show{
+  opacity:1;
+  visibility:visible;
+}
+.offers-popup-content{
+  background:var(--white);
+  border-radius:20px;
+  width:95%;
+  max-width:900px;
+  max-height:90vh;
+  overflow-y:auto;
+  transform:scale(0.8);
+  transition:transform 0.3s ease;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+.offers-popup-modal.show .offers-popup-content{
+  transform:scale(1);
+}
+.offers-popup-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:25px 30px;
+  border-bottom:2px solid var(--bg-light);
+  background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color:var(--white);
+  border-radius:20px 20px 0 0;
+}
+.offers-popup-header h3{
+  margin:0;
+  font-size:1.5rem;
+  font-weight:600;
+}
+.offers-popup-close{
+  background:transparent;
+  border:none;
+  color:var(--white);
+  font-size:1.5rem;
+  cursor:pointer;
+  padding:8px;
+  border-radius:50%;
+  transition:all 0.3s ease;
+}
+.offers-popup-close:hover{
+  background:rgba(255,255,255,0.2);
+  transform:rotate(90deg);
+}
+.offers-popup-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:25px;
+  padding:30px;
+}
+
+/* ====== RESPONSIVE DESIGN ====== */
+@media (max-width:768px){
+  .hero h2{
+    font-size:2rem;
+  }
+  .hero p{
+    font-size:1rem;
+  }
+  .section-title{
+    font-size:1.8rem;
+  }
   .grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
+  }
+  .features-grid,
+  .testimonial-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .contact-details{
+    flex-direction:column;
+    gap:20px;
+  }
+  .hero-buttons{
+    flex-direction:column;
+    align-items:center;
+  }
+}
+
+@media (max-width:480px){
+  header h1{
+    font-size:1.5rem;
   }
   header img{
-    width:56px;
-    height:56px;
+    width:50px;
+    height:50px;
+  }
+  .hero{
+    padding:40px 15px;
+  }
+  .hero h2{
+    font-size:1.6rem;
+  }
+  .container{
+    padding:20px 15px;
+  }
+  .form-box{
+    padding:20px;
+  }
+  .modal-card{
+    padding:25px;
+  }
+  .service-box{
+    padding:20px 12px;
+  }
+  .service-box i{
+    font-size:2rem;
   }
 }
 </style>
@@ -194,83 +1507,483 @@ input,textarea{
 <body>
 
 <header>
-  <h2 style="color:var(--accent);margin:0">Anjali Beauty Parlour</h2>
-  <div style="display:flex;gap:10px;align-items:center">
-    <img src="LOGO.png" onclick="openQuote()" title="બીજા પ્રસ્નો માટે" alt="લોગો" />
+  <div class="header-content">
+    <h1><img src="LOGO.png" style="height:40px;width:40px;vertical-align:middle;margin-right:10px;border-radius:50%;animation:logoSpin 4s linear infinite, logoPulse 2s ease-in-out infinite;" alt="Logo" /> Anjali Beauty Parlour</h1>
+    <img src="LOGO.png" onclick="openQuote()" title="For other inquiries" alt="Logo" style="height:40px;width:40px;border-radius:50%;" />
   </div>
 </header>
 
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content fade-in">
+    <h2>Enhance Your Beauty</h2>
+    <p>Professional beauty services with the latest techniques and premium products</p>
+    <div class="hero-buttons">
+      <a href="#services" class="btn btn-secondary"><i class="fas fa-cut"></i> View Services</a>
+      <a href="#contact" class="btn"><i class="fas fa-phone"></i> Contact Now</a>
+    </div>
+  </div>
+</section>
+
 <div class="container">
-  <h2 style="color:var(--accent);margin-top:0">સેવા પસંદ કરો</h2>
+  <h2 class="section-title" id="services">Select Our Services</h2>
+  
+  <!-- Special Offer Button -->
+  <div style="text-align:center;margin-bottom:30px;">
+    <button class="btn" onclick="openSpecialOfferPopup()" style="background:linear-gradient(135deg, var(--accent) 0%, #ff6b6b 100%);font-size:1.2rem;padding:15px 30px;animation:pulse 2s infinite;">
+      <i class="fas fa-gift"></i> Special Offer
+    </button>
+  </div>
+  
   <div class="grid" id="services">
-    <div class="service-box" data-name="I-Brow">આઇ-બ્રો</div>
-    <div class="service-box" data-name="Facial">ફેશિયલ</div>
-    <div class="service-box" data-name="WAX">વૅક્સ</div>
-    <div class="service-box" data-name="Makeup">મેકઅપ</div>
-    <div class="service-box" data-name="Bridal Makeup">લગ્ન મેકઅપ</div>
-    <div class="service-box" data-name="Bridal Choli (Rent)">લેહેંગા (ભાડે)</div>
-    <div class="service-box" data-name="Mehndi">મેહંદી</div>
-    <div class="service-box" data-name="Other">Other</div>
+    <div class="service-box" data-name="I-Brow">
+      <i class="fas fa-eye"></i>
+      <h3>Eyebrow</h3>
+    </div>
+    <div class="service-box" data-name="Facial">
+      <i class="fas fa-spa"></i>
+      <h3>Facial</h3>
+    </div>
+    <div class="service-box" data-name="WAX">
+      <i class="fas fa-fire"></i>
+      <h3>Waxing</h3>
+    </div>
+    <div class="service-box" data-name="Makeup">
+      <i class="fas fa-palette"></i>
+      <h3>Makeup</h3>
+    </div>
+    <div class="service-box" data-name="Bridal Makeup" style="position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-5px;right:-5px;background:var(--accent);color:white;padding:5px 10px;border-radius:20px;font-size:0.75rem;font-weight:bold;z-index:10;animation:pulse 2s infinite;">
+        10% OFF
+      </div>
+      <div style="position:absolute;top:10px;left:10px;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;z-index:5;animation:spin 3s linear infinite;">
+        👰
+      </div>
+      <i class="fas fa-ring"></i>
+      <h3>Bridal Makeup</h3>
+      <p style="font-size:0.85rem;color:var(--primary);font-weight:600;margin-top:8px;">Special Offer Available</p>
+    </div>
+    <div class="service-box" data-name="Bridal Choli (Rent)">
+      <i class="fas fa-tshirt"></i>
+      <h3>Lehenga (Rent)</h3>
+    </div>
+    <div class="service-box" data-name="Mehndi">
+      <i class="fas fa-hand-paper"></i>
+      <h3>Mehndi</h3>
+    </div>
+    <div class="service-box" data-name="Other" style="position:relative">
+      <i class="fas fa-plus-circle"></i>
+      <h3>Other Services</h3>
+      <p style="font-size:0.85rem;color:var(--text-light);margin-top:8px">Click to specify</p>
+      <div class="other-tooltip" style="position:absolute;top:-10px;right:-10px;background:var(--primary);color:white;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;cursor:pointer;z-index:10;" title="Click to see available services">?</div>
+    </div>
   </div>
 
   <div class="form-box" id="formBox">
-    <h3>પસંદ કરેલ સેવા (Select Option)</h3>
+    <h3><i class="fas fa-calendar-check"></i> Selected Services</h3>
     <div class="chips" id="chips"></div>
 
     <div id="otherBox" style="display:none;margin-top:10px">
-      <textarea id="otherText" placeholder="અન્ય જરૂરિયાત અહીં લખો"></textarea>
+      <div class="form-group">
+        <label for="otherText">
+          <i class="fas fa-edit"></i> Specify Your Requirements
+        </label>
+        <textarea id="otherText" rows="4" placeholder="Examples:
+- Hair Cutting & Styling
+- Hair Coloring
+- Pedicure & Manicure
+- Skin Treatment
+- Hair Spa
+- Bleach & Color
+- Straightening
+- Any other service you need"></textarea>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-top:8px">
+          <i class="fas fa-info-circle"></i> Choose from examples above or write your specific needs
+        </p>
+      </div>
     </div>
 
-    <h3 style="margin-top:10px">બુકિંગ માહિતી</h3>
-    <!-- ID FIXED: uname (JS માં જે વપરાયેલું છે એજ) -->
-    <input type="text" id="uname" placeholder="નામ" />
-    <input type="date" id="date" />
-    <input type="tel" id="phone" maxlength="10" placeholder="મોબાઇલ નંબર" />
+    <h3><i class="fas fa-user-edit"></i> Booking Information</h3>
+    <div class="form-group">
+      <label for="uname">Full Name *</label>
+      <input type="text" id="uname" placeholder="Enter your name" required />
+    </div>
+    <div class="form-group">
+      <label for="date">Select Date *</label>
+      <input type="date" id="date" required />
+    </div>
+    <div class="form-group">
+      <label for="phone">Mobile Number *</label>
+      <input type="tel" id="phone" maxlength="10" placeholder="10 digit mobile number" required />
+    </div>
 
-    <button class="btn-small" style="margin-top:10px" id="sendBtn">વોટ્સએપ પર મોકલો</button>
+    <button class="btn" id="sendBtn" style="width:100%">
+      <i class="fab fa-whatsapp"></i> Send via WhatsApp
+    </button>
   </div>
 
-  <h2 style="margin-top:26px;color:var(--accent)">લેહેંગા રેન્ટ</h2>
+  <h2 class="section-title" style="margin-top:50px">
+    <i class="fas fa-tshirt"></i> Lehenga Rental
+  </h2>
   <div class="lehenga-card">
     <div class="lehenga-image-wrap">
-      <img src="lehenga.jpg" id="lehengaImg" alt="લેહેંગા" />
+      <img src="lehenga.jpg" id="lehengaImg" alt="Lehenga" />
     </div>
     <div class="lehenga-actions">
-      <button class="btn-small" id="lehengaViewBtn">View</button>
-      <button class="btn-small" id="rentBtn">Select for Rent</button>
+      <button class="btn btn-small" id="lehengaViewBtn">
+        <i class="fas fa-search-plus"></i> View
+      </button>
+      <button class="btn btn-small" id="rentBtn">
+        <i class="fas fa-check-circle"></i> Select for Rent
+      </button>
     </div>
-    <p style="font-size:13px;margin-top:8px;color:#777">
-      ફોટો જોયા વગર પણ “Select for Rent” પર ક્લિક કરીને બુકિંગ માટે લેહેંગા પસંદ કરી શકો છો.
-    </p>
+    <div class="lehenga-info">
+      <p>
+        <i class="fas fa-info-circle"></i> You can also select lehenga for booking by clicking "Select for Rent" without viewing the photo.
+      </p>
+    </div>
+  </div>
+
+  </div>
+
+<!-- Special Offers Popup -->
+<div class="offers-popup-modal" id="offersPopupModal">
+  <div class="offers-popup-content">
+    <div class="offers-popup-header">
+      <h3><i class="fas fa-tags"></i> Special Offers</h3>
+      <button class="offers-popup-close" onclick="closeOffersPopup()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="offers-popup-grid">
+      <div class="offer-card slide-in-left" onclick="selectOffer('Bridal Makeup Package', '10% OFF', 'LIMITED TIME')" style="cursor:pointer;">
+        <div class="offer-badge">LIMITED TIME</div>
+        <div class="offer-icon">
+          <i class="fas fa-ring"></i>
+        </div>
+        <h3>Bridal Makeup Package</h3>
+        <div class="offer-discount">10% OFF</div>
+        <p class="offer-description">Complete bridal makeup with premium products</p>
+        <div class="offer-valid">
+          <i class="fas fa-clock"></i> Valid until: 31st Dec 2024
+        </div>
+        <div class="offer-select-hint">
+          <i class="fas fa-hand-pointer"></i> Click to select
+        </div>
+      </div>
+
+      <div class="offer-card slide-in-right" onclick="selectOffer('Lehenga Rental', '15% OFF', 'HOT DEAL')" style="cursor:pointer;">
+        <div class="offer-badge">HOT DEAL</div>
+        <div class="offer-icon">
+          <i class="fas fa-tshirt"></i>
+        </div>
+        <h3>Lehenga Rental</h3>
+        <div class="offer-discount">15% OFF</div>
+        <p class="offer-description">Premium lehenga collection for special occasions</p>
+        <div class="offer-valid">
+          <i class="fas fa-clock"></i> Valid until: 25th Dec 2024
+        </div>
+        <div class="offer-select-hint">
+          <i class="fas fa-hand-pointer"></i> Click to select
+        </div>
+      </div>
+
+      <div class="offer-card slide-in-left" onclick="selectOffer('Mehndi + Facial Combo', '20% OFF', 'NEW')" style="cursor:pointer;">
+        <div class="offer-badge">NEW</div>
+        <div class="offer-icon">
+          <i class="fas fa-hand-paper"></i>
+        </div>
+        <h3>Mehndi + Facial Combo</h3>
+        <div class="offer-discount">20% OFF</div>
+        <p class="offer-description">Traditional mehndi with refreshing facial</p>
+        <div class="offer-valid">
+          <i class="fas fa-clock"></i> Valid until: 20th Dec 2024
+        </div>
+        <div class="offer-select-hint">
+          <i class="fas fa-hand-pointer"></i> Click to select
+        </div>
+      </div>
+
+      <div class="offer-card slide-in-right" onclick="selectOffer('Complete Beauty Package', '25% OFF', 'POPULAR')" style="cursor:pointer;">
+        <div class="offer-badge">POPULAR</div>
+        <div class="offer-icon">
+          <i class="fas fa-spa"></i>
+        </div>
+        <h3>Complete Beauty Package</h3>
+        <div class="offer-discount">25% OFF</div>
+        <p class="offer-description">All services in one package at amazing price</p>
+        <div class="offer-valid">
+          <i class="fas fa-clock"></i> Valid until: 15th Dec 2024
+        </div>
+        <div class="offer-select-hint">
+          <i class="fas fa-hand-pointer"></i> Click to select
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- Features Section -->
+<section class="features">
+  <div class="container">
+    <h2 class="section-title">Our Specialties</h2>
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <i class="fas fa-award"></i>
+        <h3>Professional Service</h3>
+        <p>High-quality services by experienced beauty professionals</p>
+      </div>
+      <div class="feature-card fade-in">
+        <i class="fas fa-clock"></i>
+        <h3>Flexible Timing</h3>
+        <p>Available from 9 AM to 9 PM as per your convenience</p>
+      </div>
+      <div class="feature-card fade-in">
+        <i class="fas fa-heart"></i>
+        <h3>Complete Care</h3>
+        <p>Hygienic and safe beauty treatments</p>
+      </div>
+      <div class="feature-card fade-in">
+        <i class="fas fa-star"></i>
+        <h3>Satisfying Service</h3>
+        <p>100% customer satisfaction is our priority</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="reviews">
+  <div class="container">
+    <h2 class="section-title">Customer Reviews</h2>
+    
+    <!-- Add Review Button -->
+    <div style="text-align:center;margin-bottom:40px;">
+      <button class="btn" onclick="openReviewModal()">
+        <i class="fas fa-star"></i> Write a Review
+      </button>
+    </div>
+
+    <!-- Reviews Display -->
+    <div class="reviews-grid" id="reviewsGrid">
+      <div class="review-card slide-in-left">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div>
+              <h4>Priya Patel</h4>
+              <div class="review-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <span class="review-date">2 days ago</span>
+        </div>
+        <p class="review-text">Excellent service here. I got bridal makeup done and I'm very happy with the results. Professional staff and great atmosphere!</p>
+        <div class="review-images">
+          <img src="lehenga.jpg" alt="Review Image" onclick="openReviewImage(this)" />
+        </div>
+      </div>
+
+      <div class="review-card slide-in-right">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div>
+              <h4>Rina Shah</h4>
+              <div class="review-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <span class="review-date">1 week ago</span>
+        </div>
+        <p class="review-text">Eyebrow and facial were very good. Staff is very cooperative and professional. Will definitely visit again!</p>
+        <div class="review-images">
+          <img src="lehenga.jpg" alt="Review Image" onclick="openReviewImage(this)" />
+          <img src="lehenga.jpg" alt="Review Image" onclick="openReviewImage(this)" />
+        </div>
+      </div>
+
+      <div class="review-card slide-in-left">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div>
+              <h4>Anita Desai</h4>
+              <div class="review-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <span class="review-date">2 weeks ago</span>
+        </div>
+        <p class="review-text">Mehndi design was very beautiful. Everyone liked it very much. Thank you for the amazing service!</p>
+        <div class="review-images">
+          <img src="lehenga.jpg" alt="Review Image" onclick="openReviewImage(this)" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Info Section -->
+<section class="contact-info" id="contact">
+  <h3><i class="fas fa-phone-alt"></i> Contact Us</h3>
+  <div class="contact-details">
+    <div class="contact-item">
+      <i class="fas fa-phone"></i>
+      <span>+91 91061 77279</span>
+    </div>
+    <div class="contact-item">
+      <i class="fab fa-whatsapp"></i>
+      <span>WhatsApp Available</span>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-map-marker-alt"></i>
+      <a href="https://maps.app.goo.gl/L82FSk9veNxYMbwk9" target="_blank" style="color:var(--white);text-decoration:none;transition:all 0.3s ease;" onmouseover="this.style.color='var(--secondary)'" onmouseout="this.style.color='var(--white)'">
+        Veraval (Shapar), Rajkot
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2024 Anjali Beauty Parlour. All Rights Reserved.</p>
+  <div style="margin:15px 0;">
+    <a href="https://maps.app.goo.gl/L82FSk9veNxYMbwk9" target="_blank" class="btn btn-small" style="background:transparent;border:2px solid var(--white);color:var(--white);">
+      <i class="fas fa-map-marker-alt"></i> Get Directions
+    </a>
+  </div>
+  <div class="social-links">
+    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+</footer>
 
 <!-- BOOKING MODAL -->
 <div class="modal" id="confirmModal">
   <div class="modal-card">
-    <h3>વોટ્સએપ ખોલાયું</h3>
-    <p>મેસેજ મોકલી બુકિંગ પુષ્ટિ કરો.</p>
+    <h3>WhatsApp Opened</h3>
+    <p>Send the message to confirm your booking.</p>
   </div>
 </div>
 
 <!-- QUOTATION MODAL -->
 <div class="modal" id="quoteModal">
   <div class="modal-card">
-    <h3>કોટેશન માંગો</h3>
-    <input type="text" id="qname" placeholder="નામ" />
-    <input type="tel" id="qphone" placeholder="મોબાઇલ નંબર" />
-    <textarea id="qmsg" placeholder="તમારો પ્રસન લખો"></textarea>
-    <button class="btn-small" style="margin-top:10px" id="quoteSend">મોકલો</button>
-    <button class="cancel" style="margin-top:6px" onclick="closeQuote()">બંધ કરો</button>
+    <h3><i class="fas fa-file-invoice"></i> Request Quotation</h3>
+    <div class="form-group">
+      <label for="qname">Name</label>
+      <input type="text" id="qname" placeholder="Enter your name" />
+    </div>
+    <div class="form-group">
+      <label for="qphone">Mobile Number</label>
+      <input type="tel" id="qphone" placeholder="10 digit mobile number" />
+    </div>
+    <div class="form-group">
+      <label for="qmsg">Your Query</label>
+      <textarea id="qmsg" placeholder="Write your requirements here..."></textarea>
+    </div>
+    <button class="btn" id="quoteSend" style="width:100%">
+      <i class="fas fa-paper-plane"></i> Send
+    </button>
+    <button class="cancel" onclick="closeQuote()">Close</button>
   </div>
 </div>
 
 <!-- LEHENGA IMAGE VIEW MODAL -->
 <div class="modal" id="imageModal">
-  <div class="modal-card" style="max-width:480px">
-    <h3 style="margin-top:0">લેહેંગા View</h3>
-    <img src="lehenga.jpg" alt="લેહેંગા મોટું" style="width:100%;border-radius:12px;margin-top:8px" />
-    <button class="cancel" style="margin-top:10px" onclick="closeImage()">બંધ કરો</button>
+  <div class="modal-card" style="max-width:600px">
+    <h3 style="margin-top:0"><i class="fas fa-image"></i> Lehenga View</h3>
+    <img src="lehenga.jpg" alt="Lehenga Large" style="width:100%;border-radius:var(--border-radius);margin-top:15px" />
+    <button class="btn btn-secondary" style="width:100%;margin-top:20px" onclick="closeImage()">
+      <i class="fas fa-times"></i> Close
+    </button>
+  </div>
+</div>
+
+<!-- IMAGE VIEWER MODAL -->
+<div class="image-viewer-modal" id="imageViewerModal">
+  <div class="image-viewer-content">
+    <button class="image-viewer-close" onclick="closeImageViewer()">
+      <i class="fas fa-times"></i>
+    </button>
+    <button class="image-viewer-nav image-viewer-prev" onclick="navigateImage(-1)">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="image-viewer-nav image-viewer-next" onclick="navigateImage(1)">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <img id="viewerImage" src="" alt="Gallery Image" />
+    <div class="image-viewer-caption" id="imageCaption"></div>
+  </div>
+</div>
+
+<!-- REVIEW MODAL -->
+<div class="review-modal" id="reviewModal">
+  <div class="review-modal-content">
+    <h3><i class="fas fa-star"></i> Write Your Review</h3>
+    
+    <div class="star-rating" id="starRating">
+      <i class="fas fa-star star" data-rating="1"></i>
+      <i class="fas fa-star star" data-rating="2"></i>
+      <i class="fas fa-star star" data-rating="3"></i>
+      <i class="fas fa-star star" data-rating="4"></i>
+      <i class="fas fa-star star" data-rating="5"></i>
+    </div>
+
+    <div class="review-form-group">
+      <label for="reviewerName">Your Name *</label>
+      <input type="text" id="reviewerName" placeholder="Enter your name" required />
+    </div>
+
+    <div class="review-form-group">
+      <label for="reviewText">Your Review *</label>
+      <textarea id="reviewText" rows="4" placeholder="Share your experience with Anjali Beauty Parlour..." required></textarea>
+    </div>
+
+    <div class="review-form-group">
+      <label>Upload Photos (Optional)</label>
+      <div class="image-upload-area" onclick="document.getElementById('reviewImages').click()">
+        <i class="fas fa-camera"></i>
+        <p>Click to upload photos</p>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-top:5px;">Maximum 5 photos</p>
+      </div>
+      <input type="file" id="reviewImages" multiple accept="image/*" style="display:none;" onchange="handleImageUpload(event)" />
+      <div class="image-preview" id="imagePreview"></div>
+    </div>
+
+    <div class="review-actions">
+      <button class="btn btn-secondary" onclick="closeReviewModal()">
+        <i class="fas fa-times"></i> Cancel
+      </button>
+      <button class="btn" onclick="submitReview()">
+        <i class="fas fa-paper-plane"></i> Submit Review
+      </button>
+    </div>
   </div>
 </div>
 
@@ -342,7 +2055,16 @@ function updateUI(){
   formBox.style.display = selectedServices.length ? 'block' : 'none';
 
   // show other box if 'Other' selected
-  otherBox.style.display = selectedServices.includes('Other') ? 'block' : 'none';
+  const isOtherSelected = selectedServices.includes('Other');
+  otherBox.style.display = isOtherSelected ? 'block' : 'none';
+  
+  // Auto-focus on textarea when "Other" is selected
+  if (isOtherSelected && otherText) {
+    setTimeout(() => {
+      otherText.focus();
+      otherText.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 300);
+  }
 }
 
 /* remove by index */
@@ -435,6 +2157,648 @@ function closeImage(){
 }
 lehengaViewBtn.addEventListener('click', openImage);
 lehengaImg.addEventListener('click', openImage);
+
+/* ====== SMOOTH SCROLLING ====== */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+/* ====== SCROLL ANIMATIONS ====== */
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+// Observe elements for animation
+document.addEventListener('DOMContentLoaded', () => {
+  const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+  animatedElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.6s ease-out';
+    observer.observe(el);
+  });
+});
+
+/* ====== OTHER SERVICES TOOLTIP ====== */
+const otherTooltip = document.querySelector('.other-tooltip');
+if (otherTooltip) {
+  otherTooltip.addEventListener('click', (e) => {
+    e.stopPropagation();
+    showOtherServicesModal();
+  });
+}
+
+function showOtherServicesModal() {
+  const modal = document.createElement('div');
+  modal.className = 'modal show';
+  modal.innerHTML = `
+    <div class="modal-card">
+      <h3><i class="fas fa-list"></i> Available Other Services</h3>
+      <div style="background:var(--bg-light);padding:20px;border-radius:12px;margin:20px 0;">
+        <h4 style="color:var(--primary);margin-bottom:15px;"><i class="fas fa-cut"></i> Hair Services:</h4>
+        <ul style="list-style:none;padding:0;margin:0 0 20px 0;">
+          <li style="padding:8px 0;border-bottom:1px solid rgba(209,43,106,0.1);"><i class="fas fa-check" style="color:var(--primary);margin-right:10px;"></i>Hair Cutting & Styling</li>
+          <li style="padding:8px 0;border-bottom:1px solid rgba(209,43,106,0.1);"><i class="fas fa-check" style="color:var(--primary);margin-right:10px;"></i>Hair Coloring</li>
+          <li style="padding:8px 0;border-bottom:1px solid rgba(209,43,106,0.1);"><i class="fas fa-check" style="color:var(--primary);margin-right:10px;"></i>Hair Spa</li>
+          <li style="padding:8px 0;"><i class="fas fa-check" style="color:var(--primary);margin-right:10px;"></i>Bleach & Straightening</li>
+        </ul>
+        
+        <h4 style="color:var(--primary);margin-bottom:15px;"><i class="fas fa-hand-sparkles"></i> Beauty Services:</h4>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="padding:8px 0;border-bottom:1px solid rgba(209,43,106,0.1);"><i class="fas fa-check" style="color:var(--primary);margin-right:10px;"></i>Pedicure & Manicure</li>
+          <li style="padding:8px 0;border-bottom:1px solid rgba(209,43,106,0.1);"><i class="fas fa-check" style="color:var(--primary);margin-right:10px;"></i>Skin Treatment</li>
+          <li style="padding:8px 0;"><i class="fas fa-check" style="color:var(--primary);margin-right:10px;"></i>Head Massage</li>
+        </ul>
+      </div>
+      <p style="color:var(--text-light);text-align:center;margin:20px 0;">
+        <i class="fas fa-info-circle"></i> Click on "Other Services" to write your specific needs
+      </p>
+      <button class="btn" onclick="this.closest('.modal').remove()" style="width:100%;">
+        <i class="fas fa-times"></i> Close
+      </button>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.remove();
+    }
+  });
+}
+
+/* ====== GALLERY FUNCTIONALITY ====== */
+const galleryItems = document.querySelectorAll('.gallery-item');
+const imageViewerModal = document.getElementById('imageViewerModal');
+const viewerImage = document.getElementById('viewerImage');
+const imageCaption = document.getElementById('imageCaption');
+let currentImageIndex = 0;
+const galleryImages = Array.from(galleryItems).map(item => ({
+  src: item.getAttribute('data-image'),
+  caption: item.querySelector('span').textContent
+}));
+
+galleryItems.forEach((item, index) => {
+  item.addEventListener('click', () => openImageViewer(index));
+});
+
+function openImageViewer(index) {
+  currentImageIndex = index;
+  updateImageViewer();
+  imageViewerModal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeImageViewer() {
+  imageViewerModal.classList.remove('show');
+  document.body.style.overflow = 'auto';
+}
+
+function updateImageViewer() {
+  const image = galleryImages[currentImageIndex];
+  viewerImage.src = image.src;
+  imageCaption.textContent = image.caption;
+}
+
+function navigateImage(direction) {
+  currentImageIndex += direction;
+  if (currentImageIndex < 0) {
+    currentImageIndex = galleryImages.length - 1;
+  } else if (currentImageIndex >= galleryImages.length) {
+    currentImageIndex = 0;
+  }
+  updateImageViewer();
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (!imageViewerModal.classList.contains('show')) return;
+  
+  if (e.key === 'Escape') {
+    closeImageViewer();
+  } else if (e.key === 'ArrowLeft') {
+    navigateImage(-1);
+  } else if (e.key === 'ArrowRight') {
+    navigateImage(1);
+  }
+});
+
+// Close on background click
+imageViewerModal.addEventListener('click', (e) => {
+  if (e.target === imageViewerModal) {
+    closeImageViewer();
+  }
+});
+
+/* ====== REVIEW SYSTEM ====== */
+let selectedRating = 0;
+let uploadedImages = [];
+
+// Star rating functionality
+const stars = document.querySelectorAll('.star-rating .star');
+stars.forEach(star => {
+  star.addEventListener('click', () => {
+    selectedRating = parseInt(star.getAttribute('data-rating'));
+    updateStarDisplay();
+  });
+  
+  star.addEventListener('mouseenter', () => {
+    const hoverRating = parseInt(star.getAttribute('data-rating'));
+    highlightStars(hoverRating);
+  });
+});
+
+document.getElementById('starRating').addEventListener('mouseleave', () => {
+  updateStarDisplay();
+});
+
+function updateStarDisplay() {
+  stars.forEach((star, index) => {
+    if (index < selectedRating) {
+      star.classList.add('active');
+    } else {
+      star.classList.remove('active');
+    }
+  });
+}
+
+function highlightStars(rating) {
+  stars.forEach((star, index) => {
+    if (index < rating) {
+      star.classList.add('active');
+    } else {
+      star.classList.remove('active');
+    }
+  });
+}
+
+// Review modal functions
+function openReviewModal() {
+  document.getElementById('reviewModal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeReviewModal() {
+  document.getElementById('reviewModal').classList.remove('show');
+  document.body.style.overflow = 'auto';
+  resetReviewForm();
+}
+
+function resetReviewForm() {
+  document.getElementById('reviewerName').value = '';
+  document.getElementById('reviewText').value = '';
+  selectedRating = 0;
+  updateStarDisplay();
+  uploadedImages = [];
+  document.getElementById('imagePreview').innerHTML = '';
+}
+
+// Image upload functionality
+function handleImageUpload(event) {
+  const files = Array.from(event.target.files);
+  const maxImages = 5;
+  
+  if (uploadedImages.length + files.length > maxImages) {
+    alert(`Maximum ${maxImages} photos allowed`);
+    return;
+  }
+  
+  files.forEach(file => {
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        uploadedImages.push({
+          name: file.name,
+          url: e.target.result
+        });
+        updateImagePreview();
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+}
+
+function updateImagePreview() {
+  const preview = document.getElementById('imagePreview');
+  preview.innerHTML = '';
+  
+  uploadedImages.forEach((image, index) => {
+    const previewItem = document.createElement('div');
+    previewItem.className = 'image-preview-item';
+    previewItem.innerHTML = `
+      <img src="${image.url}" alt="Review Image" onclick="openReviewImage(this)" />
+      <button class="image-preview-remove" onclick="removeImage(${index})">
+        <i class="fas fa-times"></i>
+      </button>
+    `;
+    preview.appendChild(previewItem);
+  });
+}
+
+function removeImage(index) {
+  uploadedImages.splice(index, 1);
+  updateImagePreview();
+}
+
+// Submit review
+function submitReview() {
+  const name = document.getElementById('reviewerName').value.trim();
+  const reviewText = document.getElementById('reviewText').value.trim();
+  
+  if (!name) {
+    alert('Please enter your name');
+    return;
+  }
+  
+  if (selectedRating === 0) {
+    alert('Please select a star rating');
+    return;
+  }
+  
+  if (!reviewText) {
+    alert('Please write your review');
+    return;
+  }
+  
+  // Create new review element
+  const newReview = createReviewElement({
+    name: name,
+    rating: selectedRating,
+    text: reviewText,
+    images: uploadedImages,
+    date: 'Just now'
+  });
+  
+  // Add to reviews grid
+  const reviewsGrid = document.getElementById('reviewsGrid');
+  reviewsGrid.insertBefore(newReview, reviewsGrid.firstChild);
+  
+  // Show success message
+  showReviewSuccess();
+  
+  // Close modal and reset form
+  closeReviewModal();
+}
+
+function createReviewElement(review) {
+  const reviewCard = document.createElement('div');
+  reviewCard.className = 'review-card fade-in';
+  
+  const starsHtml = Array.from({length: 5}, (_, i) => 
+    i < review.rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>'
+  ).join('');
+  
+  const imagesHtml = review.images && review.images.length > 0 ? 
+    review.images.map(img => `<img src="${img.url}" alt="Review Image" onclick="openReviewImage(this)" />`).join('') : '';
+  
+  reviewCard.innerHTML = `
+    <div class="review-header">
+      <div class="reviewer-info">
+        <div class="reviewer-avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <div>
+          <h4>${review.name}</h4>
+          <div class="review-rating">${starsHtml}</div>
+        </div>
+      </div>
+      <span class="review-date">${review.date}</span>
+    </div>
+    <p class="review-text">${review.text}</p>
+    ${imagesHtml ? `<div class="review-images">${imagesHtml}</div>` : ''}
+  `;
+  
+  return reviewCard;
+}
+
+function showReviewSuccess() {
+  const successModal = document.createElement('div');
+  successModal.className = 'modal show';
+  successModal.innerHTML = `
+    <div class="modal-card">
+      <h3 style="color:var(--primary);"><i class="fas fa-check-circle"></i> Thank You!</h3>
+      <p>Your review has been submitted successfully. We appreciate your feedback!</p>
+      <button class="btn" onclick="this.closest('.modal').remove()" style="width:100%;">
+        <i class="fas fa-check"></i> OK
+      </button>
+    </div>
+  `;
+  document.body.appendChild(successModal);
+  
+  setTimeout(() => {
+    if (successModal.parentNode) {
+      successModal.remove();
+    }
+  }, 3000);
+}
+
+// Open review image in viewer
+function openReviewImage(img) {
+  const modal = document.createElement('div');
+  modal.className = 'image-viewer-modal show';
+  modal.innerHTML = `
+    <div class="image-viewer-content">
+      <button class="image-viewer-close" onclick="this.closest('.image-viewer-modal').remove()">
+        <i class="fas fa-times"></i>
+      </button>
+      <img src="${img.src}" alt="Review Image" style="max-width:90%;max-height:80vh;border-radius:var(--border-radius);" />
+    </div>
+  `;
+  document.body.appendChild(modal);
+  
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.remove();
+    }
+  });
+}
+
+// Close review modal on background click
+document.getElementById('reviewModal').addEventListener('click', (e) => {
+  if (e.target.id === 'reviewModal') {
+    closeReviewModal();
+  }
+});
+
+/* ====== SPECIAL OFFER FUNCTIONS ====== */
+function openSpecialOfferPopup() {
+  // Create special offer popup
+  const modal = document.createElement('div');
+  modal.className = 'modal show';
+  modal.innerHTML = `
+    <div class="modal-card">
+      <h3 style="color:var(--primary);"><i class="fas fa-gift"></i> Special Offers</h3>
+      <div style="background:var(--bg-light);padding:20px;border-radius:12px;margin:20px 0;">
+        <h4 style="color:var(--primary);margin-bottom:20px;">Choose Your Special Deal!</h4>
+        
+        <!-- Lehenga Offer -->
+        <div onclick="selectLehengaOffer()" style="display:flex;align-items:center;gap:20px;margin-bottom:20px;padding:15px;background:linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);border-radius:12px;cursor:pointer;transition:all 0.3s ease;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:5px;right:5px;background:var(--accent);color:white;padding:3px 8px;border-radius:12px;font-size:0.7rem;font-weight:600;">CLICK TO SELECT</div>
+          <div style="text-align:center;">
+            <div style="font-size:2.5rem;margin-bottom:10px;">👗</div>
+            <h5 style="color:#d32f2f;margin:0;">Lehenga Rental</h5>
+            <p style="color:var(--text-light);margin:5px 0;">Premium collection</p>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:2.5rem;color:var(--accent);font-weight:800;margin-bottom:10px;">20% OFF</div>
+            <p style="color:var(--text-light);margin:5px 0;">Today only!</p>
+          </div>
+        </div>
+        
+        <!-- Wax Offer -->
+        <div onclick="selectWaxOffer()" style="display:flex;align-items:center;gap:20px;margin-bottom:20px;padding:15px;background:linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);border-radius:12px;cursor:pointer;transition:all 0.3s ease;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:5px;right:5px;background:var(--accent);color:white;padding:3px 8px;border-radius:12px;font-size:0.7rem;font-weight:600;">CLICK TO SELECT</div>
+          <div style="text-align:center;">
+            <div style="font-size:2.5rem;margin-bottom:10px;">🔥</div>
+            <h5 style="color:#d32f2f;margin:0;">Waxing Service</h5>
+            <p style="color:var(--text-light);margin:5px 0;">Smooth & clean</p>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:2.5rem;color:var(--accent);font-weight:800;margin-bottom:10px;">5% OFF</div>
+            <p style="color:var(--text-light);margin:5px 0;">Limited time</p>
+          </div>
+        </div>
+        
+        <p style="color:#d32f2f;text-align:center;margin-top:15px;font-weight:600;">
+          <i class="fas fa-clock"></i> Valid until: Tonight 11:59 PM
+        </p>
+      </div>
+      <div style="display:flex;gap:15px;margin-top:25px;">
+        <button class="btn btn-secondary" onclick="this.closest('.modal').remove()" style="flex:1;">
+          <i class="fas fa-times"></i> Cancel
+        </button>
+        <button class="btn" onclick="selectLehengaOffer()" style="flex:1;">
+          <i class="fas fa-tshirt"></i> Select Lehenga (20% OFF)
+        </button>
+        <button class="btn" onclick="selectWaxOffer()" style="flex:1;">
+          <i class="fas fa-fire"></i> Select Wax (5% OFF)
+        </button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  
+  // Close on background click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.remove();
+      document.body.style.overflow = 'auto';
+    }
+  });
+}
+
+function selectLehengaOffer() {
+  // Add Lehenga offer to selected services
+  if (!selectedServices.includes('Special Offer: Lehenga Rental (20% OFF)')) {
+    selectedServices.push('Special Offer: Lehenga Rental (20% OFF)');
+    updateUI();
+  }
+  
+  // Show success message
+  const successModal = document.createElement('div');
+  successModal.className = 'modal show';
+  successModal.innerHTML = `
+    <div class="modal-card">
+      <h3 style="color:var(--primary);"><i class="fas fa-check-circle"></i> Lehenga Offer Selected!</h3>
+      <p><strong>Special Offer: Lehenga Rental (20% OFF)</strong> has been added to your booking.</p>
+      <p style="color:var(--text-light);margin-top:10px;">Amazing discount on premium lehenga collection!</p>
+      <button class="btn" onclick="this.closest('.modal').remove()" style="width:100%;">
+        <i class="fas fa-check"></i> Awesome!
+      </button>
+    </div>
+  `;
+  document.body.appendChild(successModal);
+  
+  // Close modals
+  document.querySelectorAll('.modal').forEach(m => m.remove());
+  
+  setTimeout(() => {
+    if (successModal.parentNode) {
+      successModal.remove();
+    }
+  }, 3000);
+}
+
+function selectWaxOffer() {
+  // Add Wax offer to selected services
+  if (!selectedServices.includes('Special Offer: Waxing Service (5% OFF)')) {
+    selectedServices.push('Special Offer: Waxing Service (5% OFF)');
+    updateUI();
+  }
+  
+  // Show success message
+  const successModal = document.createElement('div');
+  successModal.className = 'modal show';
+  successModal.innerHTML = `
+    <div class="modal-card">
+      <h3 style="color:var(--primary);"><i class="fas fa-check-circle"></i> Wax Offer Selected!</h3>
+      <p><strong>Special Offer: Waxing Service (5% OFF)</strong> has been added to your booking.</p>
+      <p style="color:var(--text-light);margin-top:10px;">Great discount on smooth waxing service!</p>
+      <button class="btn" onclick="this.closest('.modal').remove()" style="width:100%;">
+        <i class="fas fa-check"></i> Perfect!
+      </button>
+    </div>
+  `;
+  document.body.appendChild(successModal);
+  
+  // Close modals
+  document.querySelectorAll('.modal').forEach(m => m.remove());
+  
+  setTimeout(() => {
+    if (successModal.parentNode) {
+      successModal.remove();
+    }
+  }, 3000);
+}
+
+/* ====== OFFERS POPUP FUNCTIONS ====== */
+function openOffersPopup() {
+  const popupModal = document.getElementById('offersPopupModal');
+  if (popupModal) {
+    popupModal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeOffersPopup() {
+  const popupModal = document.getElementById('offersPopupModal');
+  if (popupModal) {
+    popupModal.classList.remove('show');
+    document.body.style.overflow = 'auto';
+  }
+}
+
+/* ====== OFFER SELECTION ====== */
+
+function selectOffer(offerName, discount, badgeType) {
+  // Remove previous selection
+  document.querySelectorAll('.offer-card').forEach(card => {
+    card.classList.remove('selected');
+  });
+  
+  // Add selection to clicked card
+  event.currentTarget.classList.add('selected');
+  
+  // Store selected offer
+  selectedOffer = {
+    name: offerName,
+    discount: discount,
+    badge: badgeType
+  };
+  
+  // Add to selected services if not already there
+  if (!selectedServices.includes('Special Offer: ' + offerName)) {
+    selectedServices.push('Special Offer: ' + offerName);
+    updateUI();
+  }
+  
+  // Show success message
+  showOfferSelected(offerName, discount);
+  
+  // Close popup after selection
+  setTimeout(() => {
+    closeOffersPopup();
+  }, 1500);
+}
+
+function showOfferSelected(offerName, discount) {
+  const successModal = document.createElement('div');
+  successModal.className = 'modal show';
+  successModal.innerHTML = `
+    <div class="modal-card">
+      <h3 style="color:var(--primary);"><i class="fas fa-check-circle"></i> Offer Selected!</h3>
+      <p><strong>${offerName}</strong> with <strong style="color:var(--accent);">${discount}</strong> has been added to your booking.</p>
+      <p style="color:var(--text-light);margin-top:10px;">You can proceed with booking or select more services.</p>
+      <button class="btn" onclick="this.closest('.modal').remove()" style="width:100%;">
+        <i class="fas fa-check"></i> OK
+      </button>
+    </div>
+  `;
+  document.body.appendChild(successModal);
+  
+  setTimeout(() => {
+    if (successModal.parentNode) {
+      successModal.remove();
+    }
+  }, 3000);
+}
+
+// Close popup on background click
+document.getElementById('offersPopupModal').addEventListener('click', (e) => {
+  if (e.target.id === 'offersPopupModal') {
+    closeOffersPopup();
+  }
+});
+
+/* ====== OFFER SELECTION ====== */
+let selectedOffer = null;
+
+function selectOffer(offerName, discount, badgeType) {
+  // Remove previous selection
+  document.querySelectorAll('.offer-card').forEach(card => {
+    card.classList.remove('selected');
+  });
+  
+  // Add selection to clicked card
+  event.currentTarget.classList.add('selected');
+  
+  // Store selected offer
+  selectedOffer = {
+    name: offerName,
+    discount: discount,
+    badge: badgeType
+  };
+  
+  // Add to selected services if not already there
+  if (!selectedServices.includes('Special Offer: ' + offerName)) {
+    selectedServices.push('Special Offer: ' + offerName);
+    updateUI();
+  }
+  
+  // Show success message
+  showOfferSelected(offerName, discount);
+}
+
+function showOfferSelected(offerName, discount) {
+  const successModal = document.createElement('div');
+  successModal.className = 'modal show';
+  successModal.innerHTML = `
+    <div class="modal-card">
+      <h3 style="color:var(--primary);"><i class="fas fa-check-circle"></i> Offer Selected!</h3>
+      <p><strong>${offerName}</strong> with <strong style="color:var(--accent);">${discount}</strong> has been added to your booking.</p>
+      <p style="color:var(--text-light);margin-top:10px;">You can proceed with booking or select more services.</p>
+      <button class="btn" onclick="this.closest('.modal').remove()" style="width:100%;">
+        <i class="fas fa-check"></i> OK
+      </button>
+    </div>
+  `;
+  document.body.appendChild(successModal);
+  
+  setTimeout(() => {
+    if (successModal.parentNode) {
+      successModal.remove();
+    }
+  }, 3000);
+}
 
 /* init */
 updateUI();
