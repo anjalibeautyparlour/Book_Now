@@ -603,6 +603,10 @@ input,textarea{
   0%, 100%{ transform:scale(1); }
   50%{ transform:scale(1.1); }
 }
+@keyframes logoFloat{
+  0%, 100%{ transform:translateY(0); }
+  50%{ transform:translateY(-15px); }
+}
 
 /* ====== HERO SECTION ====== */
 .hero{
@@ -1517,6 +1521,13 @@ footer .social-links a:hover{
 <!-- Hero Section -->
 <section class="hero">
   <div class="hero-content fade-in">
+    <!-- Logo Display -->
+    <div style="text-align:center;margin-bottom:30px;">
+      <img src="LOGO.png" style="height:120px;width:120px;border-radius:50%;box-shadow:0 10px 30px rgba(209,43,106,0.3);animation:logoFloat 3s ease-in-out infinite;" alt="Anjali Beauty Parlour Logo" />
+      <h3 style="color:var(--white);margin-top:15px;font-size:1.8rem;font-weight:700;text-shadow:2px 2px 4px rgba(0,0,0,0.2);">Anjali Beauty Parlour</h3>
+      <p style="color:rgba(255,255,255,0.9);margin-top:10px;font-size:1.1rem;">Your Beauty, Our Passion</p>
+    </div>
+    
     <h2>Enhance Your Beauty</h2>
     <p>Professional beauty services with the latest techniques and premium products</p>
     <div class="hero-buttons">
